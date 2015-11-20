@@ -1,0 +1,27 @@
+{
+  "name": "hackathon-campusfestival-2015",
+  "version": "0.0.1",
+  "description": "Exemplo de código para o Hackathon",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allisson/hackathon-campusfestival-2015.git"
+  },
+  "keywords": [
+    "hackathon",
+    "crawler"
+  ],
+  "author": "Allisson Azevedo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allisson/hackathon-campusfestival-2015/issues"
+  },
+  "homepage": "https://github.com/allisson/hackathon-campusfestival-2015#readme",
+  "dependencies": {
+    "csvtojson": "^0.4.5",
+    "request": "^2.67.0"
+  }
+}
