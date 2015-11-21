@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Busca por despesas</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>Busca por despesas</h1>
+    </div>
+    <form id="search-form" class="form">
+      <div class="form-group">
+        <label for="id_exercicio">Exercício:</label>
+        <select name="exercicio" class="form-control">
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option>
+          <option value="2002">2002</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="id_mes">Até o Mês:</label>
+        <select name="mes" class="form-control">
+          <option value="12">DEZEMBRO</option>
+          <option value="11">NOVEMBRO</option>
+          <option value="10">OUTUBRO</option>
+          <option value="9">SETEMBRO</option>
+          <option value="8">AGOSTO</option>
+          <option value="7">JULHO</option>
+          <option value="6">JUNHO</option>
+          <option value="5">MAIO</option>
+          <option value="4">ABRIL</option>
+          <option value="3">MARÇO</option>
+          <option value="2">FEVEREIRO</option>
+          <option value="1">JANEIRO</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="id_tipor">Classificação:</label>
+        <select name="tipor" class="form-control">
+          <option value="1">POR UNIDADE ORÇAMENTÁRIA</option>
+          <option value="2">POR FUNCAO</option>
+          <option value="3">POR SUBFUNÇÃO</option>
+          <option value="4">POR PROGRAMA</option>
+          <option value="5">POR PROJETO ATIVIDADE</option>
+          <option value="6">POR NATUREZA DA DESPESA</option>
+          <option value="7">POR FONTE DE RECURSO</option>
+          <option value="8">POR GRUPO FINANCEIRO</option>
+          <option value="9">POR CATEGORIA ECONÔMICA</option>
+          <option value="10">POR GRUPO DE DESPESA</option>
+          <option value="11">POR MODALIDADE DE APLICAÇÃO</option>
+          <option value="12">POR ELEMENTO DE DESPESA</option>
+          <option value="15">POR SUBELEMENTO DE DESPESA</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="id_orgao">Unidade Gestora:</label>
+        <select name="orgao" class="form-control">
+          <option value="-1">TODAS</option>
+          <option value="290201">A UNIAO - SUP. DE IMPRENSA E EDITORA  [290201]</option>
+          <option value="090201">AGENCIA DE REGULACAO DO ESTADO DA PARAIBA  [090201]</option>
+          <option value="250201">AGENCIA ESTADUAL DE VIGILANCIA SANITARIA  [250201]</option>
+          <option value="280501">AGENCIA EXECUTIVA DE GESTAO DAS AGUAS DO ESTADO DA PB  [280501]</option>
+          <option value="310801">AGENCIA EXECUTIVA DE GESTAO DAS AGUAS DO ESTADO DA PB  [310801]</option>
+          <option value="010001">ASSEMBLEIA LEGISLATIVA  [010001]</option>
+          <option value="090001">CASA CIVIL DO GOVERNADOR  [090001]</option>
+          <option value="090003">CASA MILITAR  [090003]</option>
+          <option value="210101">CIA DE DESENVOLVIMENTO DA PARAIBA  [210101]</option>
+          <option value="211201">CIA DE DESENVOLVIMENTO DE RECURSOS MINERAIS DA PARAIBA  [211201]</option>
+          <option value="190401">CODATA - CIA DE PROCESSAMENTO DE DADOS DA PARAIBA  [190401]</option>
+          <option value="310601">COMPANHIA DE AGUA E ESGOTOS DO ESTADO DA PARAIBA  [310601]</option>
+          <option value="340601">COMPANHIA DE AGUA E ESGOTOS DO ESTADO DA PARAIBA  [340601]</option>
+          <option value="310301">COMPANHIA DOCAS DA PARAIBA  [310301]</option>
+          <option value="340301">COMPANHIA DOCAS DA PARAIBA  [340301]</option>
+          <option value="270401">COMPANHIA ESTADUAL DE HABITACAO POPULAR  [270401]</option>
+          <option value="310401">COMPANHIA ESTADUAL DE HABITACAO POPULAR  [310401]</option>
+          <option value="110001">CONTROLADORIA GERAL DO ESTADO  [110001]</option>
+          <option value="230001">CORPO DE BOMBEIROS MILITAR  [230001]</option>
+          <option value="140001">DEFENSORIA PUBLICA DO ESTADO DA PARAIBA  [140001]</option>
+          <option value="310101">DEPARTAMENTO DE ESTRADAS E RODAGEM  [310101]</option>
+          <option value="340101">DEPARTAMENTO DE ESTRADAS E RODAGEM  [340101]</option>
+          <option value="260101">DEPARTAMENTO ESTADUAL DE TRANSITO  [260101]</option>
+          <option value="350101">EMATER - EMP. DE ASSISTENCIA TECNICA E EXTENCAO RURAL  [350101]</option>
+          <option value="350201">EMEPA - EMP. ESTADUAL DE PESQUISA AGRO. DA PARAIBA  [350201]</option>
+          <option value="350401">EMPASA - EMP. PARAIBANA DE ABAST. E SERV. AGRICOLAS  [350401]</option>
+          <option value="210201">EMPRESA PARAIBANA DE TURISMO SA - PB-TUR  [210201]</option>
+          <option value="300002">ENCARGOS GERAIS DO ESTADO - SUP FINANCAS  [300002]</option>
+          <option value="300001">ENCARGOS GERAIS DO ESTADO - SUP SEC ADMINISTRACAO  [300001]</option>
+          <option value="080001">ESCRITORIO DE REP. INSTITUCIONAL DO ESTADO DA PARAIBA  [080001]</option>
+          <option value="090004">ESCRITORIO DE REP. INSTITUCIONAL DO ESTADO DA PARAIBA  [090004]</option>
+          <option value="190201">ESPEP - ESCOLA DE SERVICO PUBLICO DO ESTADO DA PARAIBA  [190201]</option>
+          <option value="270101">FUND DESENV CRIANCA E ADOLESCENTE ALICE ALMEIDA  [270101]</option>
+          <option value="360301">FUNDACAO CASA DE JOSE AMERICO  [360301]</option>
+          <option value="220801">FUNDACAO CENTRO INTEGR. DE APOIO AO POR. DE DEFICIENCIA  [220801]</option>
+          <option value="270201">FUNDACAO DE ACAO COMUNITARIA  [270201]</option>
+          <option value="310701">FUNDACAO DE APOIO A PESQUISA DO ESTADO DA PARAIBA  [310701]</option>
+          <option value="280401">FUNDACAO DE APOIO A PESQUISA DO ESTADO DA PB - FAPESQ  [280401]</option>
+          <option value="360601">FUNDACAO ERNANI SATYRO  [360601]</option>
+          <option value="360101">FUNDACAO ESPACO CULTURAL DA PARAIBA  [360101]</option>
+          <option value="730001">FUNDO DE APOIO AO DESENV. DA ADMINISTRACAO TRIBUTARIA  [730001]</option>
+          <option value="650001">FUNDO DE APOIO AO DESENVOLVIMENTO INDUSTRIAL DA PB  [650001]</option>
+          <option value="400001">FUNDO DE COMBATE E ERRADICACAO DA POBREZA NO ESTADO  [400001]</option>
+          <option value="670001">FUNDO DE COMBATE E ERRADICACAO DA POBREZA NO ESTADO PB  [670001]</option>
+          <option value="680001">FUNDO DE DESENVOLVIMENTO AGROPECUARIO DO ESTADO DA PB  [680001]</option>
+          <option value="310001">FUNDO DE DESENVOLVIMENTO DO ESTADO DA PARAIBA  [310001]</option>
+          <option value="630001">FUNDO DE FISCALIZACAO ORCAMENTARIA E FINANC MUNICIPAL  [630001]</option>
+          <option value="760001">FUNDO DE INCENTIVO A CULTURA AUGUSTO DOS ANJOS  [760001]</option>
+          <option value="740001">FUNDO DE MODERNIZACAO E REAPAR DA PROC GERAL DO ESTADO  [740001]</option>
+          <option value="540001">FUNDO ESP DE PROT DOS BENS VALORES E INTERESSES DIFUSOS  [540001]</option>
+          <option value="600001">FUNDO ESPECIAL DA DEFENSORIA PUBLICA  [600001]</option>
+          <option value="460001">FUNDO ESPECIAL DA SEGURANCA PUBLICA  [460001]</option>
+          <option value="490001">FUNDO ESPECIAL DE DESENV DE RECURSOS HUMANOS  [490001]</option>
+          <option value="570001">FUNDO ESPECIAL DO CORPO DE BOMBEIROS  [570001]</option>
+          <option value="800001">FUNDO ESPECIAL DO MINISTERIO PUBLICO  [800001]</option>
+          <option value="530001">FUNDO ESPECIAL DO PODER JUDICIARIO  [530001]</option>
+          <option value="480001">FUNDO ESTADUAL DA CRIANCA E DO ADOLESCENTE  [480001]</option>
+          <option value="770001">FUNDO ESTADUAL DE APOIO AO EMPREENDEDORISMO  [770001]</option>
+          <option value="500001">FUNDO ESTADUAL DE ASSISTENCIA SOCIAL  [500001]</option>
+          <option value="420001">FUNDO ESTADUAL DE PROTECAO AO MEIO AMBIENTE  [420001]</option>
+          <option value="590001">FUNDO ESTADUAL DE PROTECAO AO MEIO AMBIENTE  [590001]</option>
+          <option value="430001">FUNDO ESTADUAL DE RECURSOS HIDRICOS  [430001]</option>
+          <option value="610001">FUNDO ESTADUAL DE RECURSOS HIDRICOS  [610001]</option>
+          <option value="090002">GABINETE VICE GOVERNADOR  [090002]</option>
+          <option value="150101">HOSPITAL DA POLICIA MILITAR GEN EDSON RAMALHO  [150101]</option>
+          <option value="320101">IDEME - INST DE DESENV MUNICIPAL E ESTADUAL  [320101]</option>
+          <option value="360901">INST. DE PATRIMONIO HISTORICO E ART. DO EST. DA PARAIBA  [360901]</option>
+          <option value="190101">INSTITUTO DE ASSISTENCIA A SAUDE DO SERVIDOR  [190101]</option>
+          <option value="210401">INSTITUTO DE METROLOGIA E QUALIDADE INDUST. DA PARAIBA  [210401]</option>
+          <option value="350301">INTERPA - INS. DE TERRAS E PLAN. AGRI. EST. DA PARAIBA  [350301]</option>
+          <option value="210501">JUNTA COMERCIAL DO ESTADO DA PARAIBA  [210501]</option>
+          <option value="050001">JUSTICA COMUM  [050001]</option>
+          <option value="250101">LABORATORIO INDUSTRIAL FARMACEUTICO DA PARAIBA S/A  [250101]</option>
+          <option value="210301">LOTERIA DO ESTADO DA PARAIBA  [210301]</option>
+          <option value="270301">LOTERIA DO ESTADO DA PARAIBA  [270301]</option>
+          <option value="060001">MINISTERIO PUBLICO  [060001]</option>
+          <option value="090101">PARAIBA PREVIDENCIA - PBPREV  [090101]</option>
+          <option value="210701">PB-TUR HOTEIS S/A  [210701]</option>
+          <option value="150001">POLICIA MILITAR DO ESTADO  [150001]</option>
+          <option value="130001">PROCURADORIA GERAL DO ESTADO  [130001]</option>
+          <option value="330001">PROJETO COOPERAR DO ESTADO DA PARAIBA  [330001]</option>
+          <option value="090301">PROTECAO E DEFESA DO CONSUMIDOR DO ESTADO DA PARAIBA  [090301]</option>
+          <option value="290301">RADIO TABAJARA - SUPERINTENDENCIA DE RADIODIFUSAO  [290301]</option>
+          <option value="280001">SEC DE EST DO MEIO AMB DOS REC HID DA CIEN E TECNOLOGIA  [280001]</option>
+          <option value="200001">SEC DE EST DO PLANEJAMENTO ORCAMENTO, GESTAO E FINANCAS  [200001]</option>
+          <option value="100001">SEC DE ESTADO DA MULHER E DA DIVERSIDADE HUMANA  [100001]</option>
+          <option value="160001">SEC DE ESTADO DO ACOMPANHAMENTO DA ACAO GOVERNAMENTAL  [160001]</option>
+          <option value="350001">SEC DE ESTADO DO DESENV DA AGROPECUARIA E DA PESCA  [350001]</option>
+          <option value="210001">SEC DE ESTADO DO TURISMO E DO DESENVOLVIMENTO ECONOMICO  [210001]</option>
+          <option value="120001">SEC. DE ESTADO DO DES. E DA ARTICULACAO MUNICIPAL  [120001]</option>
+          <option value="180001">SECRETAR DE ESTADO DA INTERIORIZACAO DA ACAO DO GOVERNO  [180001]</option>
+          <option value="190001">SECRETARIA DE ESTADO DA ADMINISTRACAO  [190001]</option>
+          <option value="240001">SECRETARIA DE ESTADO DA ADMINISTRACAO PENITENCIARIA  [240001]</option>
+          <option value="290001">SECRETARIA DE ESTADO DA COMUNICACAO INSTITUCIONAL  [290001]</option>
+          <option value="360001">SECRETARIA DE ESTADO DA CULTURA  [360001]</option>
+          <option value="220001">SECRETARIA DE ESTADO DA EDUCACAO  [220001]</option>
+          <option value="340001">SECRETARIA DE ESTADO DA INFRA-ESTRUTURA  [340001]</option>
+          <option value="070001">SECRETARIA DE ESTADO DA JUVENTUDE, ESPORTE E LAZER  [070001]</option>
+          <option value="170001">SECRETARIA DE ESTADO DA RECEITA  [170001]</option>
+          <option value="250001">SECRETARIA DE ESTADO DA SAUDE  [250001]</option>
+          <option value="260001">SECRETARIA DE ESTADO DA SEGURANCA E DA DEFESA SOCIAL  [260001]</option>
+          <option value="270001">SECRETARIA DE ESTADO DO DESENVOLVIMENTO HUMANO  [270001]</option>
+          <option value="320001">SECRETARIA DE ESTADO DO PLANEJAMENTO E GESTAO  [320001]</option>
+          <option value="200101">SECRETARIA EXECUTIVA DA FAZENDA  [200101]</option>
+          <option value="310201">SUP DE OBRAS DO PLANO DE DESENVOLVIMENTO DO ESTADO  [310201]</option>
+          <option value="340201">SUP. DE OBRAS DO PLANO DE DESENVOLVIMENTO DO ESTADO  [340201]</option>
+          <option value="280101">SUPERINTENDENCIA DE ADMINISTRACAO DO MEIO AMBIENTE  [280101]</option>
+          <option value="310501">SUPERINTENDENCIA DE ADMINISTRACAO DO MEIO AMBIENTE  [310501]</option>
+          <option value="020001">TRIBUNAL DE CONTAS  [020001]</option>
+          <option value="220401">UNIVERSIDADE ESTADUAL DA PARAIBA  [220401]</option>
+        </select>
+      </div>
+      <button id="submit-button" type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    <hr>
+    <p>
+      <pre><code id="json-code" class="language-javascript">{}</code></pre>
+    </p>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#search-form').submit(function(event){
+        event.preventDefault();
+        var button = $('#submit-button');
+        button.attr('disabled', 'disabled');
+        button.text('Carregando...');
+        $('#json-code').text('{}');
+        var form = $(this);
+        $.post('/obterDespesas/', form.serialize(), function(data) {
+          $('#json-code').text(JSON.stringify(data, null, ' '));
+          Prism.highlightAll();
+          button.removeAttr('disabled');
+          button.text('Buscar');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,66 +1,58 @@
-var fs = require('fs');
-var request = require('request');
-var Converter = require("csvtojson").Converter;
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-// dados que serão coletados
-var requisicoes = [
-  {exercicio: 2014, mes: 1, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 2, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 3, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 4, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 5, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 6, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 7, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 8, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 9, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 10, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 11, orgao: -1, tipor: 10},
-  {exercicio: 2014, mes: 12, orgao: -1, tipor: 10},
-]
+var routes = require('./routes/index');
 
-var getDespesa = function(exercicio, mes, orgao, tipor) {
-  request.post(
-    'http://appcge.pb.gov.br/siafweblivre/DespesaConsolidadaImpressao', {
-      form: {
-        exercicio: exercicio,
-        mes: mes,
-        orgao: orgao,
-        tipo: 'csv',
-        tipor: tipor
-      }
-    },
-    function(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        // removendo o header do csv
-        body = body.substring(body.indexOf('\n') + 1);
+var app = express();
 
-        // iniciando o Converter para parsear csv -> json
-        var converter = new Converter({
-          delimiter: ';',
-          noheader: true,
-          headers: [
-            'codigo', 'descricao', 'executada', 'realizada', 'saldo_a_pagar'
-          ]
-        });
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-        // csv -> json
-        converter.fromString(body, function(error, result) {
-          if (!error) {
-            // salvado o json no disco
-            var fileName = 'despesas_' + exercicio + '_' + mes + '.json'
-            fs.writeFile(fileName, JSON.stringify(result), function(error) {
-              if (!error) {
-                console.log('Arquivo salvo: ' + fileName);
-              }
-            });
-          }
-        });
-      }
-    }
-  );
-};
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// inicia coleta de dados
-requisicoes.forEach(function(item){
-  getDespesa(item.exercicio, item.mes, item.orgao, item.tipor);
+app.use('/', routes);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
+
+
+module.exports = app;
